@@ -1,0 +1,235 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-console);
+  --font-mono: var(--font-jbmono);
+}
+
+:root {
+  --font-console: var(--font-public-sans);
+}
+
+/* ---------- AWS theme tokens ----------
+   Real console: dark navy top bar, otherwise light/white body,
+   blue interactive elements (links/buttons/selection), orange
+   reserved for the logo mark only. Sharp, small-radius, dense. */
+[data-provider="aws"] {
+  --font-console: var(--font-public-sans);
+
+  --topbar-bg: #0f1b2a;
+  --topbar-text: #d5dbdb;
+  --topbar-border: #1a2734;
+  --logo-accent: #ff9900;
+
+  --bg-canvas: #f2f3f3;
+  --bg-surface: #ffffff;
+  --bg-elevated: #ffffff;
+  --bg-sidebar: #ffffff;
+  --bg-hover: #f2f3f3;
+  --bg-selected: #f0f7ff;
+
+  --border-subtle: #e9ebed;
+  --border-strong: #d1d5db;
+
+  --text-primary: #16191f;
+  --text-secondary: #5f6b7a;
+  --text-muted: #838d99;
+
+  --accent: #0972d3;
+  --accent-strong: #033160;
+  --accent-contrast: #ffffff;
+  --accent-soft: #f0f7ff;
+
+  --cta-bg: #0972d3;
+  --cta-bg-hover: #033160;
+  --cta-text: #ffffff;
+
+  --success: #037f51;
+  --success-bg: #f2fcf3;
+  --warning: #8d6605;
+  --warning-bg: #fffce6;
+  --danger: #d91515;
+  --danger-bg: #fdf3f1;
+  --info: #0972d3;
+  --info-bg: #f0f7ff;
+  --link: #0972d3;
+
+  --code-bg: #f2f3f3;
+  --code-text: #16191f;
+
+  --shadow-color: rgba(15, 27, 42, 0.12);
+
+  --radius-panel: 4px;
+  --radius-button: 4px;
+  --radius-pill: 4px;
+}
+
+/* ---------- GCP theme tokens ----------
+   Real console dark mode: near-black charcoal surfaces,
+   light-blue (#8ab4f8) interactive elements, Material rounding,
+   pill buttons. */
+[data-provider="gcp"] {
+  --font-console: var(--font-roboto);
+
+  --topbar-bg: #1f2125;
+  --topbar-text: #e3e3e3;
+  --topbar-border: #3c4043;
+  --logo-accent: #8ab4f8;
+
+  --bg-canvas: #131314;
+  --bg-surface: #1e1f21;
+  --bg-elevated: #232427;
+  --bg-sidebar: #1b1c1e;
+  --bg-hover: #2a2b2e;
+  --bg-selected: #394457;
+
+  --border-subtle: #35363a;
+  --border-strong: #4a4b4f;
+
+  --text-primary: #e8eaed;
+  --text-secondary: #bdc1c6;
+  --text-muted: #9aa0a6;
+
+  --accent: #8ab4f8;
+  --accent-strong: #aecbfa;
+  --accent-contrast: #062e6f;
+  --accent-soft: #394457;
+
+  --cta-bg: #a8c7fa;
+  --cta-bg-hover: #c2d7fb;
+  --cta-text: #062e6f;
+
+  --success: #6dd58c;
+  --success-bg: rgba(109, 213, 140, 0.14);
+  --warning: #fdd663;
+  --warning-bg: rgba(253, 214, 99, 0.12);
+  --danger: #f28b82;
+  --danger-bg: rgba(242, 139, 130, 0.14);
+  --info: #8ab4f8;
+  --info-bg: rgba(138, 180, 248, 0.14);
+  --link: #8ab4f8;
+
+  --code-bg: #17181a;
+  --code-text: #e8eaed;
+
+  --shadow-color: rgba(0, 0, 0, 0.5);
+
+  --radius-panel: 12px;
+  --radius-button: 999px;
+  --radius-pill: 999px;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--bg-canvas, #f2f3f3);
+  color: var(--text-primary, #16191f);
+  font-family: var(--font-console), ui-sans-serif, system-ui, sans-serif;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong, #d1d5db) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong, #d1d5db);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@keyframes blink-caret {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.caret-blink {
+  animation: blink-caret 1s step-end infinite;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.5s ease both;
+}
+
+@keyframes ping-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.9;
+  }
+  75%,
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+.animate-ping-ring {
+  animation: ping-ring 1.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 6s ease infinite;
+}
+
+.font-display {
+  font-family: var(--font-anton), var(--font-console), sans-serif;
+}
+
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee-x 28s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
