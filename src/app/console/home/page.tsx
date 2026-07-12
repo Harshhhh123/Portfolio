@@ -8,6 +8,7 @@ import { person, experience, projects, achievements } from "@/lib/content";
 import { Panel, PanelHeader } from "@/components/ui/panel";
 import { Badge } from "@/components/ui/badge";
 import { NavIcon } from "@/components/icon-map";
+import { ProfileAvatar } from "@/components/ui/profile-avatar";
 
 const stats = [
   { label: "Years writing production code", value: "2+" },
@@ -68,16 +69,7 @@ export default function HomePage() {
               </a>
             </div>
           </div>
-          <div
-            className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full text-xl font-bold sm:h-24 sm:w-24"
-            style={{
-              background: "var(--bg-hover)",
-              color: theme.id === "aws" ? "var(--logo-accent)" : "var(--accent)",
-              border: "1px solid var(--border-strong)",
-            }}
-          >
-            HG
-          </div>
+          <ProfileAvatar className="h-20 w-20 shrink-0 sm:h-24 sm:w-24" />
         </div>
       </Panel>
 

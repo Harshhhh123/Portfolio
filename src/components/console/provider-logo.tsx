@@ -1,4 +1,25 @@
+"use client";
+
+import { useState } from "react";
+
+/* Tries the real logo image first (drop files at public/logos/aws.png
+   and public/logos/gcp.png). Falls back to inline SVG marks until
+   the images exist. */
 export function ProviderLogo({ id }: { id: "aws" | "gcp" }) {
+  const [failed, setFailed] = useState(false);
+
+  if (!failed) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={`/logos/${id}.png`}
+        alt={id === "aws" ? "AWS" : "Google Cloud"}
+        className="h-6 w-auto object-contain"
+        onError={() => setFailed(true)}
+      />
+    );
+  }
+
   if (id === "gcp") {
     return (
       <svg width="22" height="22" viewBox="0 0 48 48" aria-hidden>
@@ -22,6 +43,7 @@ export function ProviderLogo({ id }: { id: "aws" | "gcp" }) {
       </svg>
     );
   }
+
   return (
     <svg width="46" height="22" viewBox="0 0 92 34" aria-hidden>
       <text

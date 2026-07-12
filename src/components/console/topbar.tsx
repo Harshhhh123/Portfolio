@@ -238,9 +238,9 @@ export function Topbar({
 
       <Link href="/console/home" className="flex shrink-0 items-center gap-2">
         <ProviderLogo id="gcp" />
-        <span className="hidden text-[17px] sm:inline" style={{ color: "var(--topbar-text)" }}>
+        {/* <span className="hidden text-[17px] sm:inline" style={{ color: "var(--topbar-text)" }}>
           Google <span className="font-medium">Cloud</span>
-        </span>
+        </span> */}
       </Link>
 
       <div className="relative">
